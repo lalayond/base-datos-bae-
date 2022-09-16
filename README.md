@@ -1,2 +1,2 @@
 # -base-datos-bae-
-repsitorio dedicado de la asignatura BBDD
+repositorio dedicado de la asignatura BBDD
