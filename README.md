@@ -1,2 +1,2 @@
-# llamado-base-datos-bae-
+# -base-datos-bae-
 repsitorio dedicado de la asignatura BBDD
