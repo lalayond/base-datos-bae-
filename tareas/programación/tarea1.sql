@@ -51,7 +51,8 @@ CREATE PROCEDURE obtener_numero_cientificos
 BEGIN
     SELECT cp.ref_proyecto, p.nombre, count(cp.ref_cientifico),cp.ref_proyecto, p.nombre FROM proyecto as p join cientifico_proyecto as cp on cp.ref_proyecto=p.id GROUP BY cp.ref_proyecto;
 END//
-DELIMITER $$ -- comienzo del delimitador
+
+DELIMITER //
 CREATE PROCEDURE obtener_horas_cientificos
 BEGIN
     SELECT c.id, c.nombre, p.horas from proyecto as p join cientifico_proyecto as cp on p.id=cp.ref_proyecto join cientifico as c on c.id=cp.ref_cientifico group by ref_cientifico;
