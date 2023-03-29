@@ -42,7 +42,7 @@ BEGIN
     SELECT c.*, p.* FROM cientifico as c join cientifico_proyecto as cp on cp.ref_cientifico=c.id join proyecto as p on p.id=cp.ref_proyecto;
 END
 //
--- 2.- Obtener el número de proyectos al que está asignado cada científico (mostrar el DNI y el nombre).
+-- 2.- Obtener el número de proyectos al que está asignado cada científico (mostrar el DNI y el nombre). --
 
 DELIMITER //
 CREATE PROCEDURE obtener_numero_proyectos
@@ -51,7 +51,7 @@ BEGIN
 END 
 //
 
--- 3.- Obtener el numero de científicos asignados a cada proyecto (mostrar el identificador del proyecto y el nombre del proyecto). 
+-- 3.- Obtener el numero de científicos asignados a cada proyecto (mostrar el identificador del proyecto y el nombre del proyecto). -- 
 
 DELIMITER //
 CREATE PROCEDURE obtener_numero_cientificos
@@ -60,7 +60,7 @@ BEGIN
 END
 //
 
--- 3.- Obtener el número de horas de dedicación de cada científico.
+-- 3.- Obtener el número de horas de dedicación de cada científico. --
 
 DELIMITER //
 CREATE PROCEDURE obtener_horas_cientificos
