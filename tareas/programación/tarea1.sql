@@ -60,7 +60,7 @@ BEGIN
 END
 //
 
--- 3.- Obtener el número de horas de dedicación de cada científico. --
+-- 4.- Obtener el número de horas de dedicación de cada científico. --
 
 DELIMITER //
 CREATE PROCEDURE obtener_horas_cientificos
@@ -69,7 +69,7 @@ BEGIN
 END
 //
 
--- 4.- Obtener el DNI y nombre de los científicos que se dedican a más de un proyecto y cuya dedicación media a cada proyecto sea superior a un número de horas superior a 10, por ejemplo 11 horas.
+-- 5.- Obtener el DNI y nombre de los científicos que se dedican a más de un proyecto y cuya dedicación media a cada proyecto sea superior a un número de horas superior a 10, por ejemplo 11 horas.
 
 DELIMITER //
 CREATE PROCEDURE obtener_dni_nombre_cientificos(in horas_min int)
