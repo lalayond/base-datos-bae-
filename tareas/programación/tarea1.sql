@@ -19,14 +19,14 @@ CREATE TABLE cientifico_proyecto (
 );
 
 
-INSERT INTO cientifico VALUES ("1","Juan","Abrante","González");
-INSERT INTO cientifico VALUES ("2","Juan","Hernández","González");
-INSERT INTO cientifico VALUES ("3","Dimas","Abrante","Hernández");
-INSERT INTO cientifico VALUES ("4","Noelia","Mesa","Carrillo");
-INSERT INTO cientifico VALUES ("5","Manolo","Pérez","González");
+INSERT INTO cientifico VALUES ("1","Laura","Alayón","Domínguez");
+INSERT INTO cientifico VALUES ("2","Pepe","Hernández","Domínguez");
+INSERT INTO cientifico VALUES ("3","Pepa","Domínguez","Alayón");
+INSERT INTO cientifico VALUES ("4","Samuel","Alonso","Alayón");
+INSERT INTO cientifico VALUES ("5","Antonio","Diaz","Perez");
 
-INSERT INTO proyecto VALUES ("1","LOLOPO",200);
-INSERT INTO proyecto VALUES ("2","LELEPE",300);
+INSERT INTO proyecto VALUES ("1","SALA1",200);
+INSERT INTO proyecto VALUES ("2","SALA2",300);
 
 INSERT INTO cientifico_proyecto VALUES ("1","1",100);
 INSERT INTO cientifico_proyecto VALUES ("2","2",200);
