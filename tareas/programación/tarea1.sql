@@ -34,12 +34,15 @@ INSERT INTO cientifico_proyecto VALUES ("3","1",100);
 INSERT INTO cientifico_proyecto VALUES ("4","2",200);
 INSERT INTO cientifico_proyecto VALUES ("5","1",100);
 
+-- 1.- Sacar una relación completa de los científicos asignados a cada proyecto. Mostrar DNI, Nombre del científico, identificador del proyecto y nombre del proyecto.
+
 DELIMITER //
 CREATE PROCEDURE obtener_datos
 BEGIN
     SELECT c.*, p.* FROM cientifico as c join cientifico_proyecto as cp on cp.ref_cientifico=c.id join proyecto as p on p.id=cp.ref_proyecto;
 END
 //
+-- 2.- Obtener el número de proyectos al que está asignado cada científico (mostrar el DNI y el nombre).
 
 DELIMITER //
 CREATE PROCEDURE obtener_numero_proyectos
@@ -48,18 +51,25 @@ BEGIN
 END 
 //
 
+-- 3.- Obtener el numero de científicos asignados a cada proyecto (mostrar el identificador del proyecto y el nombre del proyecto). 
+
 DELIMITER //
 CREATE PROCEDURE obtener_numero_cientificos
 BEGIN
     SELECT cp.ref_proyecto, p.nombre, count(cp.ref_cientifico),cp.ref_proyecto, p.nombre FROM proyecto as p join cientifico_proyecto as cp on cp.ref_proyecto=p.id GROUP BY cp.ref_proyecto;
 END
 //
+
+-- 3.- Obtener el número de horas de dedicación de cada científico.
+
 DELIMITER //
 CREATE PROCEDURE obtener_horas_cientificos
 BEGIN
     SELECT c.id, c.nombre, p.horas from proyecto as p join cientifico_proyecto as cp on p.id=cp.ref_proyecto join cientifico as c on c.id=cp.ref_cientifico group by ref_cientifico;
 END
 //
+
+-- 4.- Obtener el DNI y nombre de los científicos que se dedican a más de un proyecto y cuya dedicación media a cada proyecto sea superior a un número de horas superior a 10, por ejemplo 11 horas.
 
 DELIMITER //
 CREATE PROCEDURE obtener_dni_nombre_cientificos(in horas_min int)
