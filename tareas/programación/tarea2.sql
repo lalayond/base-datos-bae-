@@ -35,5 +35,3 @@ create procedure pa_empleados_hijos as select nombre,apellido,cantidad from empl
 -- 8.-- Ejecute el procedimiento creado anteriormente.
 exec pa_empleados_hijos;
 -- 9.-- Actualice la cantidad de hijos de algún empleado sin hijos y vuelva a ejecutar el procedimiento para verificar que ahora si aparece en la lista --
-
-
