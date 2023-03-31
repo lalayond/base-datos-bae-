@@ -32,6 +32,7 @@ call pa_empleados_sueldo;
 -- 7.--Cree un procedimiento almacenado llamado pa_empleados_hijos que seleccione los nombres apellidos y cantidad de hijos de los empleados con hijos --
 DELIMITER ;
 create procedure pa_empleados_hijos begin select nombre,apellido,cantidad from empleados where cantidadhijos>0;
+end;
 -- 8.-- Ejecute el procedimiento creado anteriormente.
 call pa_empleados_hijos;
 -- 9.-- Actualice la cantidad de hijos de algún empleado sin hijos y vuelva a ejecutar el procedimiento para verificar que ahora si aparece en la lista --
