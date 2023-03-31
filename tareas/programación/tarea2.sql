@@ -20,7 +20,7 @@ insert into empleados values ("22666666","Jose Maria","Morales","400.00",3,"Secr
 -- 3.- Elimine el procedimiento llamado pa_empleados_sueldo si existe --
 -- 4.- Cree un procedimiento almacenado llamado pa_empleados_sueldo que seleccione los nombres --
 DELIMITER // 
-Drop PROCEDURE IF EXISTS pa_empleados_sueldo()
+Drop PROCEDURE IF EXISTS pa_empleados_sueldo
 CREATE PROCEDURE pa_empleados_sueldo
 BEGIN 
     SELECT nombre FROM empleados;
@@ -31,7 +31,7 @@ CALL pa_empleados_sueldo;
 -- 6.- Elimine el procedimiento llamado pa_empleados_hijos si existe --
 -- 7.--Cree un procedimiento almacenado llamado pa_empleados_hijos que seleccione los nombres apellidos y cantidad de hijos de los empleados con hijos --
 DELIMITER //
-DROP PROCEDURE IF EXISTS pa_empleados_hijos()
+DROP PROCEDURE IF EXISTS pa_empleados_hijos
 CREATE PROCEDURE pa_empleados_hijos
 BEGIN
     SELECT nombre, apellido, cantidadhijos FROM empleados where cantidadhijos > 0;
