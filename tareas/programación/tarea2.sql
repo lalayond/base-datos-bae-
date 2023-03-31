@@ -25,11 +25,11 @@ drop procedure if exists pa_empleados_sueldo;
 create procedure pa_empleados_sueldo begin select nombre,apellido,sueldo from empleados;
 end;
 -- 5.- Ejecute el procedimiento creado anteriormente--
-exec pa_empleados_sueldo;
+call pa_empleados_sueldo;
 -- 6.- Elimine el procedimiento llamado pa_empleados_hijos si existe --
     drop procedure if exists pa_empleados_hijos;
 -- 7.--Cree un procedimiento almacenado llamado pa_empleados_hijos que seleccione los nombres apellidos y cantidad de hijos de los empleados con hijos --
 create procedure pa_empleados_hijos begin select nombre,apellido,cantidad from empleados where cantidadhijos>0;
 -- 8.-- Ejecute el procedimiento creado anteriormente.
-exec pa_empleados_hijos;
+call pa_empleados_hijos;
 -- 9.-- Actualice la cantidad de hijos de algún empleado sin hijos y vuelva a ejecutar el procedimiento para verificar que ahora si aparece en la lista --
