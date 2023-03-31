@@ -20,23 +20,34 @@ insert into empleados values ("22666666","Jose Maria","Morales","400.00",3,"Secr
 -- 3.- Elimine el procedimiento llamado pa_empleados_sueldo si existe --
 -- 4.- Cree un procedimiento almacenado llamado pa_empleados_sueldo que seleccione los nombres --
 DELIMITER // 
-Drop PROCEDURE IF EXISTS pa_empleados_sueldo
+Drop PROCEDURE IF EXISTS pa_empleados_sueldo//
 CREATE PROCEDURE pa_empleados_sueldo
 BEGIN 
     SELECT nombre FROM empleados;
 END
 //
 -- 5.- Ejecute el procedimiento creado anteriormente--
-CALL pa_empleados_sueldo;
+DELIMITER // 
+CALL pa_empleados_sueldo
+//
 -- 6.- Elimine el procedimiento llamado pa_empleados_hijos si existe --
 -- 7.--Cree un procedimiento almacenado llamado pa_empleados_hijos que seleccione los nombres apellidos y cantidad de hijos de los empleados con hijos --
 DELIMITER //
-DROP PROCEDURE IF EXISTS pa_empleados_hijos
+DROP PROCEDURE IF EXISTS pa_empleados_hijos//
 CREATE PROCEDURE pa_empleados_hijos
 BEGIN
     SELECT nombre, apellido, cantidadhijos FROM empleados where cantidadhijos > 0;
 END 
 //
 -- 8.-- Ejecute el procedimiento creado anteriormente.
-CALL pa_empleados_hijos;
+DELIMITER // 
+CALL pa_empleados_hijos (0)
+//
 -- 9.-- Actualice la cantidad de hijos de algún empleado sin hijos y vuelva a ejecutar el procedimiento para verificar que ahora si aparece en la lista --
+DELIMITER //
+DROP PROCEDURE IF EXISTS numero_hijos//
+CREATE PROCEDURE numero_hijos(in nombre_empleado varchar(20), in nueva_cantidad_hijos int, in fitro_hijos int)
+BEGIN
+    UPDATE empleados SET cantidadhijos=nueva_cantidad_hijos where nombre=nombre_empleado and cantidadhijos > filtro_hijos;
+END
+//
