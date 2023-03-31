@@ -1,16 +1,14 @@
 -- Una empresa almacena los datos de sus empleados en una tabla llamada empleados --
 -- 1.-  Eliminamos la tabla, si existe y la creamos --
-drop table if exist empleados;
-
-create table empleados(
-  documento char(8),
-  nombre varchar(20),
-  apellido varchar(20),
-  sueldo decimal(6,2),
-  cantidadhijos int,
-  seccion varchar(20),
-  primary key(documento)
- );
+drop table  empleados;
+CREATE TABLE empleados (
+    documento char(8) NOT NULl PRIMARY KEY,
+    nombre varchar(20) DEFAULT NULL,
+    apellido varchar(20) DEFAULT NULL,
+    sueldo decimal(6,2) DEFAULT NULL,
+    cantidadhijos int DEFAULT NULL,
+    seccion varchar(20) DEFAULT NULL
+);
 
 -- 2.-Ingrese algunos registros --
 insert into empleados values ("22222222","Juan","Perez","300.00",2,"Contaduria");
@@ -20,19 +18,25 @@ insert into empleados values ("22555555","Susana","Garcia","400.00",2,"Secretari
 insert into empleados values ("22666666","Jose Maria","Morales","400.00",3,"Secretaria")
 
 -- 3.- Elimine el procedimiento llamado pa_empleados_sueldo si existe --
-drop procedure if exists pa_empleados_sueldo;
 -- 4.- Cree un procedimiento almacenado llamado pa_empleados_sueldo que seleccione los nombres --
-DELIMITER ;
-create procedure pa_empleados_sueldo begin select nombre,apellido,sueldo from empleados;
-end;
+DELIMITER // 
+Drop PROCEDURE IF EXISTS pa_empleados_sueldo()
+CREATE PROCEDURE pa_empleados_sueldo
+BEGIN 
+    SELECT nombre FROM empleados;
+END
+//
 -- 5.- Ejecute el procedimiento creado anteriormente--
-call pa_empleados_sueldo;
+CALL pa_empleados_sueldo;
 -- 6.- Elimine el procedimiento llamado pa_empleados_hijos si existe --
-    drop procedure if exists pa_empleados_hijos;
 -- 7.--Cree un procedimiento almacenado llamado pa_empleados_hijos que seleccione los nombres apellidos y cantidad de hijos de los empleados con hijos --
-DELIMITER ;
-create procedure pa_empleados_hijos begin select nombre,apellido,cantidad from empleados where cantidadhijos>0;
-end;
+DELIMITER //
+DROP PROCEDURE IF EXISTS pa_empleados_hijos()
+CREATE PROCEDURE pa_empleados_hijos
+BEGIN
+    SELECT nombre, apellido, cantidadhijos FROM empleados where cantidadhijos > 0;
+END 
+//
 -- 8.-- Ejecute el procedimiento creado anteriormente.
-call pa_empleados_hijos;
+CALL pa_empleados_hijos;
 -- 9.-- Actualice la cantidad de hijos de algún empleado sin hijos y vuelva a ejecutar el procedimiento para verificar que ahora si aparece en la lista --
