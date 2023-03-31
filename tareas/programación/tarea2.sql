@@ -22,6 +22,7 @@ insert into empleados values ("22666666","Jose Maria","Morales","400.00",3,"Secr
 -- 3.- Elimine el procedimiento llamado pa_empleados_sueldo si existe --
 drop procedure if exists pa_empleados_sueldo;
 -- 4.- Cree un procedimiento almacenado llamado pa_empleados_sueldo que seleccione los nombres --
+DELIMITER ;
 create procedure pa_empleados_sueldo begin select nombre,apellido,sueldo from empleados;
 end;
 -- 5.- Ejecute el procedimiento creado anteriormente--
@@ -29,6 +30,7 @@ call pa_empleados_sueldo;
 -- 6.- Elimine el procedimiento llamado pa_empleados_hijos si existe --
     drop procedure if exists pa_empleados_hijos;
 -- 7.--Cree un procedimiento almacenado llamado pa_empleados_hijos que seleccione los nombres apellidos y cantidad de hijos de los empleados con hijos --
+DELIMITER ;
 create procedure pa_empleados_hijos begin select nombre,apellido,cantidad from empleados where cantidadhijos>0;
 -- 8.-- Ejecute el procedimiento creado anteriormente.
 call pa_empleados_hijos;
