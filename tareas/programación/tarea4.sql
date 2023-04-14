@@ -1,7 +1,3 @@
---- Creación de la base de datos --
-mysql -u root -p 
-mysql> create database gestion_clientes;
-mysql> use gestion_clientes;
 
 --- Creación de la table personas --
 create table persona(
