@@ -33,8 +33,8 @@ END
 
 --- 2. Actualizar el nombre e id de un cliente --
 DELIMITER //
-DROP TABLE IF EXISTS actualizar_nombre //
-CREATE PROCEDURE actualizar_nombre(in nuevo_id VARCHAR(50), in nuevo_nombre VARCHAR(50))
+DROP TABLE IF EXISTS cambiar_nombre //
+CREATE PROCEDURE cambiar_nombre(in nuevo_id VARCHAR(50), in nuevo_nombre VARCHAR(50))
 BEGIN 
     update persona set id = nuevo_id;
     update persona set nombre = nuevo_nombre;
@@ -43,17 +43,17 @@ END
 
 --- 3. Eliminar un cliente --
 DELIMITER //
-DROP PROCEDURE IF EXISTS eliminar_cliente //
-CREATE PROCEDURE eliminar_cliente(in id_eliminar VARCHAR(50))
+DROP PROCEDURE IF EXISTS suprimir_cliente //
+CREATE PROCEDURE suprimir_cliente(in id_suprimir VARCHAR(10))
 BEGIN
-    delete from persona where id = id_eliminar;
+    delete from persona where id = id_suprimir;
 END
 //
 
---- 4. Investigar procedimientos con paramentaros de salida. --
+--- 4 Intenta realizar uno o varios procedimientos con paramentaros de salida. --
 DELIMITER //
-DROP PROCEDURE IF EXISTS obtener_peso //
-CREATE PROCEDURE obtener_peso(in nombre_persona varchar(50), out peso_obtenido)
+DROP PROCEDURE IF EXISTS  peso_obtenido //
+CREATE PROCEDURE peso_obtenido(in nombre_persona varchar(10), out altura_obtenido)
 BEGIN
     set peso_obtenido = (
         select peso from persona 
@@ -63,7 +63,7 @@ END
 //
 
 
---- 5. Investigar cómo hacer un ciclo (while). --
+--- 5 Intenta realizar uno o varios procedimientos con un ciclo (while) --
 DELIMITER // 
 DROP PROCEDURE IF EXISTS insertar_personas //
 CREATE PROCEDURE insertar_personas( in numero_de_personas)
