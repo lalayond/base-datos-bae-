@@ -1,5 +1,5 @@
 --- Se crea una base de datos ---
-Crear tabla Salario(
+Create table salario(
  identificador int not null primary key,
  nombre varchar(20) not null,
  salario_base int not null
