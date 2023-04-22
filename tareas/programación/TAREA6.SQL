@@ -26,6 +26,19 @@ insert into persona values(10, 'Leonardo', 1000,NULL, NULL, NULL, NULL, NULL),
 
 --- Cree una función para cada punto teniendo en cuenta que: ---
 
+DELIMITER //
+DROP PROCEDURE IF EXISTS insertar_datos//
+CREATE PROCEDURE insertar_datos(
+  IN DNI VARCHAR(10),
+  IN NOMBRE VARCHAR(50))
+BEGIN
+  INSERT INTO persona AS p
+  (p.dni,p.nombre,p.apellido1,p.apellido2,p.peso,p.sexo)
+  VALUES
+  (DNI,NOMBRE,APELLIDO1,APELLIDO2,PESO,SEXO);
+END
+//
+
 --- Función subsidio_transporte: El subsidio de transporte equivale al 7% al salario básico. Actualiza el valor en la tabla--
 
 DELIMITER //
