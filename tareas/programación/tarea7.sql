@@ -135,31 +135,38 @@ SELECT * FROM films_actors;
 CREATE VIEW films_categorys AS
 SELECT film.title, category.name FROM film, film_category, category WHERE film.film_id = film_category.film_id 
 AND film_category.category_id = category.category_id;
---
+
 SELECT * FROM films_categorys;
--- 1000 rows in set (0,01 sec)
---
 -- 3. Mostrar el country, la ciudad y dirección de cada miembro del staff.
 CREATE VIEW staff_address AS
 SELECT staff.staff_id, country.country, city.city, address.address FROM staff, country, city, address
 WHERE country.country_id = city.country_id AND city.city_id = address.city_id AND staff.address_id = address.address_id;
---
+
 SELECT * FROM staff_address;
--- 2 rows in set (0,00 sec)
---
 -- 4. Mostrar el country, la ciudad y dirección de cada customer.
 CREATE VIEW customer_address AS
 SELECT customer.customer_id, country.country, city.city, address.address FROM customer, country, city, 
 address WHERE customer.address_id = address.address_id
 AND address.city_id = city.city_id
-AND city.country_id = country.country_id;
---
-SELECT * FROM customer_address;
--- 599 rows in set (0,01 sec)
---
+AND city.country_id = country.country.id;
+
+SELECT * FROM custumer.addres_id;
 -- 5. Media de duración de las películas cada categoría.
 CREATE VIEW avg_category AS
 SELECT c.name, avg(f.length) FROM category AS c, film AS f, film_category AS fc
 WHERE c.category_id = fc.category_id AND f.film_id = fc.film_id GROUP BY c.name;
---
+
 SELECT * FROM avg_category;
+SELECT * FROM country.country.id;
+SELECT * FROM dpodls.id;
+SELECT * FROM lopoend.id;
+SELECT * FROM point.id;
+SELECT * FROM ponter.id;
+SELECT * FROM gkg.id,
+SELECT * From hdie.id;
+SELECT * FROM popop.id;
+SELECT * FROM kr.id;
+
+
+
+
