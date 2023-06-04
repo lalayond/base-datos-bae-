@@ -9,14 +9,13 @@ CREATE TABLE persona(
       BONO FLOAT,
       INTEGRAL FLOAT);
 
-
 --- Se crea 10 registros ---
 
 insert into persona values(1, 'Laura', 1000, NULL, NULL, NULL, NULL, NULL),
-insert into persona values(2, 'Antonio', 1500, NULL, NULL, NULL, NULL, NULL),
-insert into persona values(3, 'Lucas', 1000, NULL, NULL, NULL, NULL, NULL),
-insert into persona values(4, 'Pablo', 1500, NULL, NULL, NULL, NULL, NULL),
-insert into persona values(5, 'Richard', 1000, NULL, NULL, NULL, NULL, NULL),
+insert into persona values(2, 'Juanmi', 1500, NULL, NULL, NULL, NULL, NULL),
+insert into persona values(3, 'Yamila', 1000, NULL, NULL, NULL, NULL, NULL),
+insert into persona values(4, 'Pedro', 1500, NULL, NULL, NULL, NULL, NULL),
+insert into persona values(5, 'Ricardo', 1000, NULL, NULL, NULL, NULL, NULL),
 insert into persona values(6, 'Pepe', 1500, NULL, NULL, NULL, NULL, NULL),
 insert into persona values(7, 'Pepa', 1000, NULL, NULL, NULL, NULL, NULL),
 insert into persona values(8, 'Lola', 1500, NULL, NULL, NULL, NULL, NULL),
@@ -62,7 +61,7 @@ DETERMINISTIC
 BEGIN
 RETURN (SELECT salario_base 
         FROM persona WHERE id = id_persona) * 0.04;
-END 
+END
 //
 
 --- Funcion pension La pension que corresponde al 8% al salario
@@ -73,7 +72,7 @@ END
  RETURNS FLOAT
  DETERMINISTIC
 BEGIN
-    RETURN (SELECT salario_base FROM persona 
-            WHERE id = id_persona) * 0.08;
+    RETURN (SELECT salario_base FROM persona
+           WHERE id_persona) * 0.08;
 END
-//            
+//           
