@@ -3,298 +3,77 @@
 -- - Realiza cada una de las siguientes consultas:
 -- 1. Actores que tienen de primer nombre __Scarlett__.
 SELECT * FROM actor WHERE first_name = 'Scarlett';
--- +----------+------------+-----------+---------------------+
--- | actor_id | first_name | last_name | last_update         |
--- +----------+------------+-----------+---------------------+
--- |       81 | SCARLETT   | DAMON     | 2006-02-15 04:34:33 |
--- |      124 | SCARLETT   | BENING    | 2006-02-15 04:34:33 |
--- +----------+------------+-----------+---------------------+
--- 2 rows in set (0,00 sec)
---
 -- 2. Actores que tienen de apellido __Johansson__.
 SELECT * FROM actor WHERE last_name = 'Johansson';
--- +----------+------------+-----------+---------------------+
--- | actor_id | first_name | last_name | last_update         |
--- +----------+------------+-----------+---------------------+
--- |        8 | MATTHEW    | JOHANSSON | 2006-02-15 04:34:33 |
--- |       64 | RAY        | JOHANSSON | 2006-02-15 04:34:33 |
--- |      146 | ALBERT     | JOHANSSON | 2006-02-15 04:34:33 |
--- +----------+------------+-----------+---------------------+
--- 3 rows in set (0,00 sec)
---
 -- 3. Actores que contengan una __O__ en su nombre.
 SELECT * FROM actor WHERE first_name like '%O%';
--- 36 rows in set (0,00 sec)
---
 -- 4. Actores que contengan una __O__ en su nombre y en una __A__ en su apellido.
 SELECT * FROM actor WHERE first_name like '%O%' AND last_name like '%A%';
--- +----------+------------+--------------+---------------------+
--- | actor_id | first_name | last_name    | last_update         |
--- +----------+------------+--------------+---------------------+
--- |        5 | JOHNNY     | LOLLOBRIGIDA | 2006-02-15 04:34:33 |
--- |        9 | JOE        | SWANK        | 2006-02-15 04:34:33 |
--- |       11 | ZERO       | CAGE         | 2006-02-15 04:34:33 |
--- |       19 | BOB        | FAWCETT      | 2006-02-15 04:34:33 |
--- |       28 | WOODY      | HOFFMAN      | 2006-02-15 04:34:33 |
--- |       40 | JOHNNY     | CAGE         | 2006-02-15 04:34:33 |
--- |       42 | TOM        | MIRANDA      | 2006-02-15 04:34:33 |
--- |       63 | CAMERON    | WRAY         | 2006-02-15 04:34:33 |
--- |       78 | GROUCHO    | SINATRA      | 2006-02-15 04:34:33 |
--- |      114 | MORGAN     | MCDORMAND    | 2006-02-15 04:34:33 |
--- |      115 | HARRISON   | BALE         | 2006-02-15 04:34:33 |
--- |      137 | MORGAN     | WILLIAMS     | 2006-02-15 04:34:33 |
--- |      172 | GROUCHO    | WILLIAMS     | 2006-02-15 04:34:33 |
--- |      176 | JON        | CHASE        | 2006-02-15 04:34:33 |
--- |      188 | ROCK       | DUKAKIS      | 2006-02-15 04:34:33 |
--- |      192 | JOHN       | SUVARI       | 2006-02-15 04:34:33 |
--- +----------+------------+--------------+---------------------+
--- 16 rows in set (0,00 sec)
---
 -- 5. Actores que contengan dos __O__ en su nombre y en una __A__ en su apellido.
 SELECT * FROM actor WHERE first_name like '%O%O%' AND last_name like '%A%';
--- +----------+------------+-----------+---------------------+
--- | actor_id | first_name | last_name | last_update         |
--- +----------+------------+-----------+---------------------+
--- |       28 | WOODY      | HOFFMAN   | 2006-02-15 04:34:33 |
--- |       78 | GROUCHO    | SINATRA   | 2006-02-15 04:34:33 |
--- |      172 | GROUCHO    | WILLIAMS  | 2006-02-15 04:34:33 |
--- +----------+------------+-----------+---------------------+
--- 3 rows in set (0,00 sec)
---
 -- 6. Actores donde su tercera letra sea __B__.
 SELECT * FROM actor WHERE first_name LIKE '__B%';
--- 7 rows in set (0,00 sec)
---
 -- 7. Ciudades que empiezan por __a__.
 SELECT * FROM city WHERE city regexp '^a';
--- 43 rows in set (0,00 sec)
---
 -- 8. Ciudades que acaban por __s__.
 SELECT * FROM city WHERE city regexp 's$';
--- 31 rows in set (0,01 sec)
---
 -- 9. Ciudades del country __61__.
 SELECT * FROM city WHERE country_id = 61;
--- +---------+----------+------------+---------------------+
--- | city_id | city     | country_id | last_update         |
--- +---------+----------+------------+---------------------+
--- |     115 | Chisinau |         61 | 2006-02-15 04:45:25 |
--- +---------+----------+------------+---------------------+
--- 1 row in set (0,00 sec)
---
 -- 10. Ciudades del country __Spain__.
 SELECT * FROM city WHERE country_id = (SELECT country_id FROM country WHERE country = 'Spain');
--- +---------+-------------------------+------------+---------------------+
--- | city_id | city                    | country_id | last_update         |
--- +---------+-------------------------+------------+---------------------+
--- |       1 | A Coruña (La Coruña)    |         87 | 2006-02-15 04:45:25 |
--- |     146 | Donostia-San Sebastián  |         87 | 2006-02-15 04:45:25 |
--- |     181 | Gijón                   |         87 | 2006-02-15 04:45:25 |
--- |     388 | Ourense (Orense)        |         87 | 2006-02-15 04:45:25 |
--- |     459 | Santiago de Compostela  |         87 | 2006-02-15 04:45:25 |
--- +---------+-------------------------+------------+---------------------+
--- 5 rows in set (0,00 sec)
---
 -- 11. Ciudades con nombres compuestos.
 SELECT * FROM city WHERE city like '% %';
--- 92 rows in set (0,00 sec)
---
 -- 12. Películas con una duración entre __80 y 100__.
 SELECT count(*) FROM film WHERE length BETWEEN 80 AND 100;
--- +----------+
--- | count(*) |
--- +----------+
--- |      147 |
--- +----------+
--- 1 row in set (0,01 sec)
---
 -- 13. Peliculas con un rental_rate entre __1 y 3__.
 SELECT count(*) FROM film WHERE rental_rate BETWEEN 1 AND 3;
--- +----------+
--- | count(*) |
--- +----------+
--- |      323 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 14.  Películas con un titulo de más de __12 letras__.
 SELECT count(title) FROM film WHERE length(title) >= 12;
--- +--------------+
--- | count(title) |
--- +--------------+
--- |          807 |
--- +--------------+
--- 1 row in set (0,00 sec)
---
 -- 15. Peliculas con un rating de __PG__ o __G__.
 SELECT count(*) FROM film WHERE rating in ('PG','G');
--- +----------+
--- | count(*) |
--- +----------+
--- |      372 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 16. Peliculas que no tengan un rating de __NC-17__.
 SELECT count(*) FROM film WHERE rating not in ('NC-17');
--- +----------+
--- | count(*) |
--- +----------+
--- |      790 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 17. Peliculas con un rating __PG__ y duracion de más de __120__.
 SELECT count(*) FROM film WHERE rating = 'PG' AND length > 120;
--- +----------+
--- | count(*) |
--- +----------+
--- |       82 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 18. ¿Cuantos actores hay?
 SELECT count(*) FROM actor;
--- +----------+
--- | count(*) |
--- +----------+
--- |      200 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 19. ¿Cuántas ciudades tiene el country __Spain__?
 SELECT count(*) FROM city WHERE country_id = (SELECT country_id FROM country WHERE country = 'Spain');
--- +----------+
--- | count(*) |
--- +----------+
--- |        5 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 20. ¿Cuántos countries hay que empiezan por __a__?
 SELECT count(*) FROM country WHERE country regexp '^a';
--- +----------+
--- | count(*) |
--- +----------+
--- |       10 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 21. Media de duración de peliculas con __PG__.
 SELECT avg(length) as AVG FROM film WHERE rating = 'PG';
--- +----------+
--- | AVG      |
--- +----------+
--- | 112.0052 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 22. Suma de __rental_rate__ de todas las peliculas.
 SELECT sum(rental_rate) FROM film;
--- +------------------+
--- | sum(rental_rate) |
--- +------------------+
--- |          2980.00 |
--- +------------------+
--- 1 row in set (0,00 sec)
---
 -- 23. Pelicula con mayor duración.
 SELECT COUNT(*) FROM film WHERE length = (SELECT max(length) FROM film);
--- +----------+
--- | COUNT(*) |
--- +----------+
--- |       10 |
--- +----------+
--- 1 row in set (0,01 sec)
---
 SELECT COUNT(*) FROM film WHERE length = (SELECT min(length) FROM film);
--- +----------+
--- | COUNT(*) |
--- +----------+
--- |        5 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 24. Mostrar las ciudades del country __Spain__ (multitabla).
 SELECT count(*) FROM city JOIN country ON city.country_id = country.country_id 
 AND country = 'Spain';
--- +----------+
--- | count(*) |
--- +----------+
--- |        5 |
--- +----------+
--- 1 row in set (0,00 sec)
---
 -- 25. Mostrar el nombre de la película y el nombre de los actores.
 SELECT film.title, actor.first_name FROM film, film_actor, actor WHERE film.film_id = film_actor.actor_id
 AND film_actor.actor_id = actor.actor_id;
--- 5462 rows in set (0,01 sec)
---
 -- 26. Mostrar el nombre de la película y el de sus categorías.
 SELECT film.title, category.name FROM film, film_category, category WHERE film.film_id = film_category.film_id 
 AND film_category.category_id = category.category_id;
--- 1000 rows in set (0,00 sec)
---
 -- 27. Mostrar el country, la ciudad y dirección de cada miembro del staff.
 SELECT staff.staff_id, country.country, city.city, address.address FROM staff, country, city, address
 WHERE country.country_id = city.country_id AND city.city_id = address.city_id AND staff.address_id = address.address_id;
---
 -- 28. Mostrar el country, la ciudad y dirección de cada customer.
 SELECT country.country, city.city, address.address FROM customer, country, city, 
 address WHERE customer.address_id = address.address_id
 AND address.city_id = city.city_id
 AND city.country_id = country.country_id;
--- 599 rows in set (0,02 sec)
---
 -- 29. Numero de películas de cada rating.
 SELECT rating, count(*) FROM film GROUP BY rating;
--- +--------+----------+
--- | rating | count(*) |
--- +--------+----------+
--- | PG     |      194 |
--- | G      |      178 |
--- | NC-17  |      210 |
--- | PG-13  |      223 |
--- | R      |      195 |
--- +--------+----------+
--- 5 rows in set (0,01 sec)
---
 -- 30. Cuantas películas ha realizado el actor "ED CHASE".
 SELECT count(*) FROM actor AS a, film AS f, film_actor AS fa
 WHERE f.film_id = fa.film_id AND a.actor_id = fa.actor_id AND first_name = 'ED'
-AND last_name = 'CHASE' GROUP BY first_name, last_name;
--- +----------+
--- | count(*) |
--- +----------+
--- |       22 |
--- +----------+
--- 1 row in set (0,01 sec)
---
+AND last_name = 'CHASE' GROUP BY first_name , last_name;
 -- 31. Media de duración de las películas cada categoría.
 SELECT c.name, avg(f.length) FROM category AS c, film AS f, film_category AS fc
 WHERE c.category_id = fc.category_id AND f.film_id = fc.film_id GROUP BY c.name;
--- +-------------+---------------+
--- | name        | avg(f.length) |
--- +-------------+---------------+
--- | Action      |      111.6094 |
--- | Animation   |      111.0152 |
--- | Children    |      109.8000 |
--- | Classics    |      111.6667 |
--- | Comedy      |      115.8276 |
--- | Documentary |      108.7500 |
--- | Drama       |      120.8387 |
--- | Family      |      114.7826 |
--- | Foreign     |      121.6986 |
--- | Games       |      127.8361 |
--- | Horror      |      112.4821 |
--- | Music       |      113.6471 |
--- | New         |      111.1270 |
--- | Sci-Fi      |      108.1967 |
--- | Sports      |      128.2027 |
--- | Travel      |      113.3158 |
--- +-------------+---------------+
--- 16 rows in set (0,01 sec)
---
 -- Muestra el resultado de la consulta de las vistas que se proporcionan.
 -- View structure for view `customer_list`
 --
@@ -343,8 +122,6 @@ FROM
 GROUP BY film.film_id, category.name;
 --
 SELECT * FROM film_list;
--- 1000 rows in set (0,01 sec)
---
 -- Crea 5 vistas sobre la BBDD, y realizar la consulta, para mostrar los resultados. Las vistas deben de
 -- tener 3 o más tablas de la BBDD.
 --
@@ -352,10 +129,8 @@ SELECT * FROM film_list;
 CREATE VIEW films_actors AS
 SELECT film.title, actor.first_name FROM film, film_actor, actor WHERE film.film_id = film_actor.actor_id
 AND film_actor.actor_id = actor.actor_id;
---
+
 SELECT * FROM films_actors;
--- 5462 rows in set (0,01 sec)
---
 -- 2. Mostrar el nombre de la película y el de sus categorías.
 CREATE VIEW films_categorys AS
 SELECT film.title, category.name FROM film, film_category, category WHERE film.film_id = film_category.film_id 
